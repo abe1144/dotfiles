@@ -33,6 +33,7 @@ echo "==> Symlinks"
 link nvim               "$HOME/.config/nvim"
 link tmux/tmux.conf     "$HOME/.config/tmux/tmux.conf"
 link bin/dev            "$HOME/.local/bin/dev"
+link claude/CLAUDE.md   "$HOME/.claude/CLAUDE.md"
 
 echo "==> Checks"
 case ":$PATH:" in

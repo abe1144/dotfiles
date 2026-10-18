@@ -41,6 +41,7 @@ git clone https://github.com/abe1144/dotfiles.git ~/dotfiles
   | `nvim/` | `~/.config/nvim` |
   | `tmux/tmux.conf` | `~/.config/tmux/tmux.conf` |
   | `bin/dev` | `~/.local/bin/dev` |
+  | `claude/CLAUDE.md` | `~/.claude/CLAUDE.md` |
 
 - checks that `~/.local/bin` is on your PATH and that Claude Code is installed
 
@@ -125,6 +126,7 @@ The **prefix** is `Ctrl-a`: press `Ctrl-a`, let go, then press the key.
 ```
 dotfiles/
 ├── bin/dev            # workspace launcher
+├── claude/CLAUDE.md   # global instructions for Claude Code (Socratic tutor mode)
 ├── nvim/              # Neovim config (kickstart.nvim fork)
 │   ├── init.lua
 │   ├── lazy-lock.json # pinned plugin versions
@@ -132,7 +134,8 @@ dotfiles/
 ├── tmux/tmux.conf     # tmux config
 ├── Brewfile           # packages to install
 ├── install.sh         # installs packages and creates symlinks
-└── docs/layout.svg    # the diagram above
+├── docs/layout.svg    # the diagram above
+└── docs/notes.md      # my learning notes / cheat sheet
 ```
 
 ### Customising
