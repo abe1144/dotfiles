@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13">
+  <title>dev workspace layout: nvim on the left, Claude Code top right, shell bottom right</title>
+  <defs>
+    <clipPath id="win"><rect width="900" height="560" rx="12"/></clipPath>
+  </defs>
+  <g clip-path="url(#win)">
+    <!-- window -->
+    <rect width="900" height="560" fill="#1e1e2e"/>
+    <!-- title bar -->
+    <rect width="900" height="34" fill="#2a2a3c"/>
+    <circle cx="20" cy="17" r="6" fill="#ff5f57"/>
+    <circle cx="40" cy="17" r="6" fill="#febc2e"/>
+    <circle cx="60" cy="17" r="6" fill="#28c840"/>
+    <text x="450" y="22" fill="#9399b2" text-anchor="middle">~/code/my-project — tmux</text>
+
+    <!-- tmux status bar (top) -->
+    <rect y="34" width="900" height="24" fill="#1e1e2e"/>
+    <text x="10" y="51" fill="#5fafff" font-weight="bold">my-project</text>
+    <text x="110" y="51" fill="#5fafff" font-weight="bold">1:zsh*</text>
+    <text x="890" y="51" fill="#7f849c" text-anchor="end">21:49</text>
+
+    <!-- ===== Left pane: nvim (active) ===== -->
+    <rect x="0" y="58" width="539" height="502" fill="#181825"/>
+    <line x1="0" y1="68" x2="539" y2="68" stroke="#5fafff" stroke-width="1.5"/>
+    <rect x="12" y="60" width="74" height="16" fill="#181825"/>
+    <text x="16" y="72" fill="#5fafff">1: nvim</text>
+
+    <g fill="#585b70" text-anchor="end">
+      <text x="34" y="98">1</text><text x="34" y="118">2</text><text x="34" y="138">3</text>
+      <text x="34" y="158">4</text><text x="34" y="178">5</text><text x="34" y="198">6</text>
+      <text x="34" y="218">7</text><text x="34" y="238">8</text><text x="34" y="258">9</text>
+      <text x="34" y="278">10</text><text x="34" y="298">11</text><text x="34" y="318">12</text>
+    </g>
+    <text x="48" y="98"><tspan fill="#cba6f7">import</tspan><tspan fill="#cdd6f4"> json</tspan></text>
+    <text x="48" y="138"><tspan fill="#cba6f7">def</tspan><tspan fill="#89b4fa"> load_config</tspan><tspan fill="#cdd6f4">(path):</tspan></text>
+    <text x="79" y="158"><tspan fill="#cba6f7">with</tspan><tspan fill="#cdd6f4"> open(path) </tspan><tspan fill="#cba6f7">as</tspan><tspan fill="#cdd6f4"> f:</tspan></text>
+    <text x="111" y="178"><tspan fill="#cba6f7">return</tspan><tspan fill="#cdd6f4"> json.load(f)</tspan></text>
+    <text x="48" y="218"><tspan fill="#cba6f7">def</tspan><tspan fill="#89b4fa"> main</tspan><tspan fill="#cdd6f4">():</tspan></text>
+    <text x="79" y="238"><tspan fill="#cdd6f4">cfg = load_config(</tspan><tspan fill="#a6e3a1">"config.json"</tspan><tspan fill="#cdd6f4">)</tspan></text>
+    <text x="79" y="258"><tspan fill="#cdd6f4">print(</tspan><tspan fill="#a6e3a1">f"Loaded {len(cfg)} keys"</tspan><tspan fill="#cdd6f4">)</tspan></text>
+    <text x="48" y="298"><tspan fill="#cba6f7">if</tspan><tspan fill="#cdd6f4"> __name__ == </tspan><tspan fill="#a6e3a1">"__main__"</tspan><tspan fill="#cdd6f4">:</tspan></text>
+    <text x="79" y="318"><tspan fill="#cdd6f4">main()</tspan></text>
+    <rect x="79" y="305" width="8" height="17" fill="#cdd6f4" opacity="0.7"/>
+
+    <!-- nvim statusline -->
+    <rect x="0" y="514" width="539" height="22" fill="#313244"/>
+    <rect x="0" y="514" width="70" height="22" fill="#89b4fa"/>
+    <text x="35" y="529" fill="#11111b" font-weight="bold" text-anchor="middle">NORMAL</text>
+    <text x="82" y="529" fill="#cdd6f4">main.py</text>
+    <text x="530" y="529" fill="#a6adc8" text-anchor="end">12:5</text>
+
+    <!-- ===== Divider ===== -->
+    <rect x="539" y="58" width="2" height="502" fill="#45475a"/>
+
+    <!-- ===== Right top: Claude Code ===== -->
+    <rect x="541" y="58" width="359" height="318" fill="#181825"/>
+    <line x1="541" y1="68" x2="900" y2="68" stroke="#45475a" stroke-width="1.5"/>
+    <rect x="553" y="60" width="82" height="16" fill="#181825"/>
+    <text x="557" y="72" fill="#9399b2">2: claude</text>
+
+    <rect x="556" y="86" width="330" height="40" rx="6" fill="none" stroke="#d97757"/>
+    <text x="570" y="111" fill="#d97757">✻</text>
+    <text x="588" y="111" fill="#cdd6f4">Welcome to Claude Code</text>
+
+    <text x="556" y="152" fill="#9399b2">&gt;</text>
+    <text x="572" y="152" fill="#cdd6f4">add error handling when the</text>
+    <text x="572" y="170" fill="#cdd6f4">config file is missing</text>
+
+    <text x="556" y="200" fill="#a6e3a1">●</text>
+    <text x="572" y="200" fill="#cdd6f4">Read(main.py)</text>
+    <text x="556" y="222" fill="#a6e3a1">●</text>
+    <text x="572" y="222" fill="#cdd6f4">Update(main.py)</text>
+    <text x="572" y="242" fill="#a6e3a1">+ try:</text>
+    <text x="572" y="260" fill="#a6e3a1">+</text><text x="603" y="260" fill="#a6e3a1">with open(path) as f:</text>
+    <text x="572" y="278" fill="#a6e3a1">+ except FileNotFoundError:</text>
+
+    <rect x="556" y="330" width="330" height="30" rx="4" fill="none" stroke="#45475a"/>
+    <text x="568" y="350" fill="#9399b2">&gt;</text>
+    <rect x="584" y="338" width="8" height="16" fill="#cdd6f4" opacity="0.5"/>
+
+    <!-- ===== Right bottom: shell ===== -->
+    <rect x="541" y="376" width="359" height="2" fill="#45475a"/>
+    <rect x="541" y="378" width="359" height="182" fill="#181825"/>
+    <line x1="541" y1="388" x2="900" y2="388" stroke="#45475a" stroke-width="1.5"/>
+    <rect x="553" y="380" width="66" height="16" fill="#181825"/>
+    <text x="557" y="392" fill="#9399b2">3: zsh</text>
+
+    <text x="556" y="420"><tspan fill="#89b4fa">my-project</tspan><tspan fill="#cdd6f4"> $ python main.py</tspan></text>
+    <text x="556" y="440" fill="#cdd6f4">Loaded 4 keys</text>
+    <text x="556" y="468"><tspan fill="#89b4fa">my-project</tspan><tspan fill="#cdd6f4"> $ pytest -q</tspan></text>
+    <text x="556" y="488" fill="#a6e3a1">6 passed in 0.12s</text>
+    <text x="556" y="516"><tspan fill="#89b4fa">my-project</tspan><tspan fill="#cdd6f4"> $ </tspan></text>
+    <rect x="652" y="504" width="8" height="16" fill="#cdd6f4" opacity="0.7"/>
+
+    <!-- role tags -->
+    <g font-size="11" font-weight="bold">
+      <rect x="455" y="482" width="72" height="22" rx="11" fill="#5fafff"/>
+      <text x="491" y="497" fill="#11111b" text-anchor="middle">EDIT</text>
+      <rect x="816" y="294" width="72" height="22" rx="11" fill="#d97757"/>
+      <text x="852" y="309" fill="#11111b" text-anchor="middle">ASK</text>
+      <rect x="816" y="526" width="72" height="22" rx="11" fill="#a6e3a1"/>
+      <text x="852" y="541" fill="#11111b" text-anchor="middle">RUN</text>
+    </g>
+  </g>
+</svg>

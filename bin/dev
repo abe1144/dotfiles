@@ -1,0 +1,32 @@
+#!/usr/bin/env zsh
+# dev [dir] — open (or re-attach to) a tmux coding workspace for a project:
+#
+#   +-----------------+----------+
+#   |                 |  claude  |
+#   |      nvim       |          |
+#   |                 +----------+
+#   |                 |  shell   |
+#   +-----------------+----------+
+
+dir=${1:-$PWD}
+dir=${dir:A}
+[[ -d $dir ]] || { echo "dev: no such directory: $dir" >&2; exit 1 }
+name=${${dir:t}//[.:]/_}
+
+if ! tmux has-session -t "=$name" 2>/dev/null; then
+  editor=$(tmux new-session -d -P -F '#{pane_id}' -s "$name" -c "$dir" \
+    -x "$(tput cols)" -y "$(tput lines)")
+  ai=$(tmux split-window -h -P -F '#{pane_id}' -t "$editor" -c "$dir" -l 40%)
+  shell=$(tmux split-window -v -P -F '#{pane_id}' -t "$ai" -c "$dir" -l 35%)
+
+  # Launch via send-keys so each pane drops back to a shell if the program exits
+  tmux send-keys -t "$editor" 'nvim .' Enter
+  tmux send-keys -t "$ai" 'claude' Enter
+  tmux select-pane -t "$editor"
+fi
+
+if [[ -n $TMUX ]]; then
+  tmux switch-client -t "=$name"
+else
+  tmux attach-session -t "=$name"
+fi

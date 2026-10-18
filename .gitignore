@@ -1,0 +1,10 @@
+.DS_Store
+*.bak-*
+
+# Never commit secrets
+.env
+.env.*
+*.local
+*.pem
+*.key
+hosts.yml
