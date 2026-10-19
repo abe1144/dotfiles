@@ -59,3 +59,12 @@ Short lessons I've picked up while using this setup. Newest sections at the bott
 - `~/.claude/CLAUDE.md` (in the repo as `claude/CLAUDE.md`) is read at the start of **every** Claude session. Keep it short.
 - It tells Claude to act as a Socratic tutor for coding questions. Say "just give me the answer" to skip that.
 - Longer lessons go here in `notes.md`. Claude reads this file when needed.
+
+## Python in Neovim
+
+- Open a `.py` file and two language servers start: **pyright** (types, go-to-definition, hover docs) and **ruff** (lint warnings and quick fixes). Each checks different things, so both stay on.
+- **Completion:** suggestions pop up as you type. `Tab` accepts, `Ctrl-n`/`Ctrl-p` move through the list, `Ctrl-e` closes the menu (do that first if you want a real tab while it's open), `Ctrl-Space` opens it by hand.
+- **Formatting:** saving (`:w`) sorts imports and formats the file with ruff. `Space` `f` formats without saving.
+- **LSP keys:** `grd` go to definition, `grr` find references, `grn` rename, `gra` code actions (e.g. "remove unused import"), `K` hover docs.
+- **Virtual envs:** pyright finds a `.venv/` in the project root, so run `uv venv` / `uv sync` there and it sees your packages.
+- `:Mason` shows installed tools. `:checkhealth vim.lsp` and `:ConformInfo` help when something isn't working.

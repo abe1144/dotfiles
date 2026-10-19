@@ -602,7 +602,16 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         -- gopls = {},
-        -- pyright = {},
+        -- Python: completions, go-to-definition, hover docs, type errors
+        pyright = {
+          settings = {
+            pyright = {
+              -- Hide pyright's dimmed "X is not accessed" hints; ruff already reports unused imports/variables
+              disableTaggedHints = true,
+            },
+          },
+        },
+        ruff = {}, -- Python: lint warnings and quick fixes (formatting is handled by conform below)
         -- rust_analyzer = {},
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -664,6 +673,34 @@ require('lazy').setup({
     end,
   },
 
+  { -- Autoformat
+    'stevearc/conform.nvim',
+    event = { 'BufWritePre' },
+    cmd = { 'ConformInfo' },
+    keys = {
+      {
+        '<leader>f',
+        function() require('conform').format { async = true, lsp_format = 'fallback' } end,
+        mode = '',
+        desc = '[F]ormat buffer',
+      },
+    },
+    ---@module 'conform'
+    ---@type conform.setupOpts
+    opts = {
+      notify_on_error = false,
+      format_on_save = {
+        timeout_ms = 500,
+        lsp_format = 'fallback',
+      },
+      formatters_by_ft = {
+        lua = { 'stylua' },
+        -- Sort imports first, then format (both run ruff, installed by Mason above)
+        python = { 'ruff_organize_imports', 'ruff_format' },
+      },
+    },
+  },
+
   { -- Autocompletion
     'saghen/blink.cmp',
     event = 'VimEnter',
@@ -719,7 +756,9 @@ require('lazy').setup({
         -- <c-k>: Toggle signature help
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        preset = 'default',
+        -- Tab accepts when the menu is open, jumps through snippets, otherwise inserts a normal tab.
+        -- Press <c-e> to close the menu if you want a literal tab while it's showing.
+        preset = 'super-tab',
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
